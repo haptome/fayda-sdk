@@ -1,4 +1,4 @@
-module github.com/fayda-sdk/fayda-sdk/packages/go
+module github.com/haptome/fayda-sdk/packages/go
 
 go 1.21
 
