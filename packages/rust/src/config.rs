@@ -27,7 +27,10 @@ impl FaydaConfig {
     }
 
     pub fn discovery_endpoint(&self) -> String {
-        format!("{}/v1/esignet/oauth/.well-known/openid-configuration", self.base_url)
+        format!(
+            "{}/v1/esignet/oauth/.well-known/openid-configuration",
+            self.base_url
+        )
     }
 }
 

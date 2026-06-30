@@ -4,9 +4,9 @@ mod tests {
         auth::Auth,
         config::FaydaClientBuilder,
         errors::{map_token_error, FaydaError},
+        models::GetFromCodeParams,
         token::Token,
         userinfo::UserInfo,
-        models::GetFromCodeParams,
     };
     use base64::Engine;
 
@@ -62,8 +62,14 @@ mod tests {
         let url = url::Url::parse(&result.url).unwrap();
         let params: std::collections::HashMap<_, _> = url.query_pairs().into_owned().collect();
 
-        assert_eq!(params.get("response_type").map(String::as_str), Some("code"));
-        assert_eq!(params.get("client_id").map(String::as_str), Some("test-client"));
+        assert_eq!(
+            params.get("response_type").map(String::as_str),
+            Some("code")
+        );
+        assert_eq!(
+            params.get("client_id").map(String::as_str),
+            Some("test-client")
+        );
         assert_eq!(
             params.get("code_challenge_method").map(String::as_str),
             Some("S256")

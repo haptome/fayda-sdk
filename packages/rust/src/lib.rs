@@ -12,12 +12,12 @@ pub mod errors;
 #[cfg(feature = "axum")]
 pub mod middleware;
 pub mod models;
+mod tests;
 pub mod token;
 pub mod userinfo;
-mod tests;
 
 pub use client::FaydaClient;
-pub use config::{FaydaConfig, FaydaClientBuilder};
+pub use config::{FaydaClientBuilder, FaydaConfig};
 pub use errors::FaydaError;
 pub use models::{AuthorizationResult, FaydaTokens, FaydaUser, GetFromCodeParams};
 

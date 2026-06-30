@@ -81,20 +81,17 @@ fn map_claims_to_user(claims: &serde_json::Value) -> FaydaUser {
             .get("street_address")
             .and_then(|v| v.as_str())
             .map(String::from),
-        locality: a
-            .get("locality")
-            .and_then(|v| v.as_str())
-            .map(String::from),
+        locality: a.get("locality").and_then(|v| v.as_str()).map(String::from),
         region: a.get("region").and_then(|v| v.as_str()).map(String::from),
-        country: a
-            .get("country")
-            .and_then(|v| v.as_str())
-            .map(String::from),
+        country: a.get("country").and_then(|v| v.as_str()).map(String::from),
     });
 
     FaydaUser {
         sub: claims["sub"].as_str().unwrap_or("").to_string(),
-        name: claims.get("name").and_then(|v| v.as_str()).map(String::from),
+        name: claims
+            .get("name")
+            .and_then(|v| v.as_str())
+            .map(String::from),
         name_am: claims
             .get("name#am")
             .and_then(|v| v.as_str())

@@ -1,6 +1,8 @@
 use crate::{config::FaydaConfig, errors::FaydaError, models::FaydaTokens};
 use base64::Engine;
-use jsonwebtoken::{decode, decode_header, encode, Algorithm, DecodingKey, EncodingKey, Header, Validation};
+use jsonwebtoken::{
+    decode, decode_header, encode, Algorithm, DecodingKey, EncodingKey, Header, Validation,
+};
 use rsa::{pkcs8::EncodePrivateKey, BigUint, RsaPrivateKey};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
@@ -83,7 +85,11 @@ impl Token {
     }
 
     /// Exchange authorization code for tokens
-    pub async fn exchange(&self, code: &str, code_verifier: &str) -> Result<FaydaTokens, FaydaError> {
+    pub async fn exchange(
+        &self,
+        code: &str,
+        code_verifier: &str,
+    ) -> Result<FaydaTokens, FaydaError> {
         if self.config.sandbox {
             return Ok(FaydaTokens {
                 access_token: "mock-access-token-abc123def456".to_string(),
@@ -180,9 +186,8 @@ impl Token {
         let mut validation = Validation::new(Algorithm::RS256);
         validation.set_audience(&[self.config.client_id.as_str()]);
 
-        let token_data =
-            decode::<HashMap<String, Value>>(id_token, &decoding_key, &validation)
-                .map_err(FaydaError::Jwt)?;
+        let token_data = decode::<HashMap<String, Value>>(id_token, &decoding_key, &validation)
+            .map_err(FaydaError::Jwt)?;
 
         Ok(token_data.claims)
     }

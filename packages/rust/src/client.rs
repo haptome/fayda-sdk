@@ -1,6 +1,6 @@
 use crate::{
     auth::Auth,
-    config::{FaydaConfig, FaydaClientBuilder},
+    config::{FaydaClientBuilder, FaydaConfig},
     token::Token,
     userinfo::UserInfo,
 };

@@ -6,14 +6,13 @@ on:
     paths:
       - "packages/python/**"
       - ".github/workflows/python.yml"
+    tags:
+      - "python-v*"
   pull_request:
     branches: [main, develop]
     paths:
       - "packages/python/**"
       - ".github/workflows/python.yml"
-  push:
-    tags:
-      - "python-v*"
 
 jobs:
   test:
