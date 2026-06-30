@@ -1,0 +1,48 @@
+{
+  "name": "@fayda/sdk",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for Ethiopia's Fayda National Digital ID (eSignet)",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./nestjs": {
+      "import": "./dist/nestjs/index.js",
+      "require": "./dist/nestjs/index.cjs",
+      "types": "./dist/nestjs/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --outDir dist && npm run build:cjs",
+    "build:cjs": "node scripts/build-cjs.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "jose": "^5.0.0",
+    "node-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": ">=10 <12",
+    "@nestjs/core": ">=10 <12"
+  },
+  "peerDependenciesOptional": {
+    "@nestjs/common": true,
+    "@nestjs/core": true
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
