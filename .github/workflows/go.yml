@@ -1,0 +1,63 @@
+name: Go
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "packages/go/**"
+      - ".github/workflows/go.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "packages/go/**"
+      - ".github/workflows/go.yml"
+  # Go module publish: tag as  packages/go/v<semver>  e.g. packages/go/v0.1.0
+  push_tag:
+    tags:
+      - "packages/go/v*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
+          cache-dependency-path: packages/go/go.sum
+
+      - name: Download dependencies
+        run: cd packages/go && go mod download
+
+      - name: Run tests
+        run: cd packages/go && go test ./... -v -race -coverprofile=coverage.out
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./packages/go/coverage.out
+
+  # Go modules are published by pushing a tag of the form:
+  #   packages/go/v<semver>
+  # The Go module proxy (proxy.golang.org) picks this up automatically from
+  # the public GitHub repo — no extra publish step is required.
+  # This job just verifies the module is valid before the tag is considered live.
+  verify-publish:
+    needs: test
+    if: startsWith(github.ref, 'refs/tags/packages/go/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
+
+      - name: Verify module
+        run: |
+          cd packages/go
+          go mod verify
+          go build ./...
