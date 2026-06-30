@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fayda-sdk"
+version = "0.1.0"
+description = "Python SDK for Ethiopia's Fayda National Digital ID (eSignet)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["fayda", "ethiopia", "digital-id", "oidc", "esignet"]
+authors = [
+  { name = "Fayda SDK Contributors" }
+]
+
+dependencies = [
+  "httpx>=0.24",
+  "python-jose[cryptography]>=3.3",
+  "cryptography>=41.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7",
+  "pytest-asyncio>=0.21",
+  "respx>=0.20",
+  "pytest-cov>=4",
+]
+
+[project.urls]
+Homepage = "https://github.com/fayda-sdk/fayda-sdk"
+Repository = "https://github.com/fayda-sdk/fayda-sdk"
+Issues = "https://github.com/fayda-sdk/fayda-sdk/issues"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
