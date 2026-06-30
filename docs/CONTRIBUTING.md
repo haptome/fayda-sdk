@@ -223,4 +223,4 @@ Before submitting a PR:
 
 ## Questions?
 
-Open an issue on GitHub: https://github.com/fayda-sdk/fayda-sdk/issues
+Open an issue on GitHub: https://github.com/haptome/fayda-sdk/issues
