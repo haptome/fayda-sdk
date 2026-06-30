@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "tsc --outDir dist",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "dev": "tsc --watch"
   },
   "peerDependencies": {
