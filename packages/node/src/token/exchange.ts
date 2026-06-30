@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { createRemoteJWKSet, importJWK, jwtVerify, SignJWT } from "jose";
 import { ResolvedConfig } from "../config.js";
 import { FaydaTokens, fromTokenResponse } from "../models.js";
@@ -37,7 +38,7 @@ export class TokenExchange {
       .setAudience(this.config.tokenEndpoint)
       .setIssuedAt(now)
       .setExpirationTime(now + 7200)
-      .setJti(crypto.randomUUID())
+      .setJti(randomUUID())
       .sign(privateKey);
   }
 
