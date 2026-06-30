@@ -60,4 +60,4 @@ jobs:
           key: ${{ runner.os }}-cargo-publish-${{ hashFiles('packages/rust/Cargo.lock') }}
 
       - name: Publish to crates.io
-        run: cd packages/rust && cargo publish --token ${{ secrets.CARGO_TOKEN }}
+        run: cd packages/rust && cargo publish --token ${{ secrets.CRATES_KEY }}

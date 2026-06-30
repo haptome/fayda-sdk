@@ -11,6 +11,9 @@ on:
     paths:
       - "packages/python/**"
       - ".github/workflows/python.yml"
+  push:
+    tags:
+      - "python-v*"
 
 jobs:
   test:
@@ -47,9 +50,6 @@ jobs:
     needs: test
     if: startsWith(github.ref, 'refs/tags/python-v')
     runs-on: ubuntu-latest
-    environment: pypi
-    permissions:
-      id-token: write  # required for trusted publishing
     steps:
       - uses: actions/checkout@v4
 
@@ -67,6 +67,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: packages/python/dist/
-          # Uses OIDC trusted publishing (no token needed) when environment is configured.
-          # Fallback: set PYPI_TOKEN secret and uncomment the line below.
-          # password: ${{ secrets.PYPI_TOKEN }}
+          password: ${{ secrets.PYPI_KEY }}

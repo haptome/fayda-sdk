@@ -71,9 +71,9 @@ jobs:
       - name: Publish @fayda/sdk to npm
         run: cd packages/node && npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
 
       - name: Publish @fayda/react to npm
         run: cd packages/react && npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}

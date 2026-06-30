@@ -6,15 +6,13 @@ on:
     paths:
       - "packages/go/**"
       - ".github/workflows/go.yml"
+    tags:
+      - "go/v*"
   pull_request:
     branches: [main, develop]
     paths:
       - "packages/go/**"
       - ".github/workflows/go.yml"
-  # Go module publish: tag as  packages/go/v<semver>  e.g. packages/go/v0.1.0
-  push_tag:
-    tags:
-      - "packages/go/v*"
 
 jobs:
   test:
@@ -39,14 +37,13 @@ jobs:
         with:
           files: ./packages/go/coverage.out
 
-  # Go modules are published by pushing a tag of the form:
-  #   packages/go/v<semver>
-  # The Go module proxy (proxy.golang.org) picks this up automatically from
-  # the public GitHub repo — no extra publish step is required.
-  # This job just verifies the module is valid before the tag is considered live.
-  verify-publish:
+  # Go modules are distributed via the Go module proxy (proxy.golang.org).
+  # The proxy picks up the module automatically from the public GitHub repo
+  # when a tag of the form  go/v<semver>  is pushed — no upload step needed.
+  # This job verifies the module is valid before the tag is considered live.
+  verify-module:
     needs: test
-    if: startsWith(github.ref, 'refs/tags/packages/go/v')
+    if: startsWith(github.ref, 'refs/tags/go/v')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
