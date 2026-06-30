@@ -7,7 +7,6 @@ use crate::{
 
 /// Main Fayda SDK client
 pub struct FaydaClient {
-    config: FaydaConfig,
     pub auth: Auth,
     pub token: Token,
     pub userinfo: UserInfo,
@@ -26,7 +25,6 @@ impl FaydaClient {
         let userinfo = UserInfo::new(config.clone());
 
         FaydaClient {
-            config,
             auth,
             token,
             userinfo,
