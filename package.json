@@ -1,0 +1,8 @@
+{
+  "name": "fayda-sdk-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/node",
+    "packages/react"
+  ]
+}

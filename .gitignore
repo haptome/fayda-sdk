@@ -1,0 +1,82 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+dist/
+build/
+*.tsbuildinfo
+.eslintcache
+.next/
+
+# TypeScript
+*.d.ts
+.ts
+dist/
+*.js.map
+
+# Go
+*.o
+*.a
+*.so
+.DS_Store
+.idea/
+*.swp
+*.swo
+*~
+vendor/
+
+# Rust
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# OS
+.DS_Store
+Thumbs.db
+.env.local
+.env.*.local

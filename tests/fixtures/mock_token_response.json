@@ -1,0 +1,6 @@
+{
+  "access_token": "mock-access-token-abc123def456",
+  "id_token": "mock-id-token-xyz789uvw012",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}

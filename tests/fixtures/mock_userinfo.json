@@ -1,0 +1,16 @@
+{
+  "sub": "mock-fayda-id-000001",
+  "name": "Abebe Bikila",
+  "name#am": "አበበ ቢኪላ",
+  "name#en": "Abebe Bikila",
+  "email": "abebe.bikila@example.com",
+  "phone_number": "+251911000000",
+  "gender": "male",
+  "birthdate": "1932-08-07",
+  "picture": "https://placehold.co/150x150?text=AB",
+  "address": {
+    "formatted": "Addis Ababa, Ethiopia",
+    "locality": "Addis Ababa",
+    "country": "ET"
+  }
+}

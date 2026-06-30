@@ -1,0 +1,4 @@
+{
+  "error": "invalid_transaction",
+  "error_description": "Transaction has expired or the request is invalid"
+}
