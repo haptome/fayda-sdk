@@ -1,0 +1,31 @@
+[package]
+name = "fayda-sdk"
+version = "0.1.0"
+edition = "2021"
+description = "Rust SDK for Ethiopia's Fayda National Digital ID (eSignet)"
+license = "MIT"
+repository = "https://github.com/fayda-sdk/fayda-sdk"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.11", features = ["json"] }
+jsonwebtoken = "9"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.21"
+sha2 = "0.10"
+rand = "0.8"
+thiserror = "1"
+uuid = { version = "1", features = ["v4"] }
+constant_time_eq = "0.3"
+urlencoding = "2"
+rsa = { version = "0.9", features = ["pem"] }
+axum = { version = "0.7", optional = true }
+
+[features]
+axum = ["dep:axum"]
+
+[dev-dependencies]
+tokio-test = "0.4"
+url = "2"
+
