@@ -35,16 +35,16 @@ jobs:
       - name: Install all JS dependencies (workspace)
         run: npm install
 
-      - name: Build
+      - name: Build Node package
         run: cd packages/node && npm run build
 
-      - name: Test
+      - name: Test Node package
         run: cd packages/node && npm test
 
-      - name: Build
+      - name: Build React package
         run: cd packages/react && npm run build
 
-      - name: Test
+      - name: Test React package
         run: cd packages/react && npm test
 
   publish:
@@ -63,17 +63,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build packages
-        run: |
-          cd packages/node && npm run build
-          cd ../react && npm run build
+      - name: Build Node package
+        run: cd packages/node && npm run build
 
-      - name: Publish to npm
+      - name: Build React package
+        run: cd packages/react && npm run build
+
+      - name: Publish Node to npm
         run: cd packages/node && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
 
-      - name: Publish to npm
+      - name: Publish React to npm
         run: cd packages/react && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_KEY }}
