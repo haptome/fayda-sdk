@@ -35,16 +35,16 @@ jobs:
       - name: Install all JS dependencies (workspace)
         run: npm install
 
-      - name: Build @fayda/sdk
+      - name: Build
         run: cd packages/node && npm run build
 
-      - name: Test @fayda/sdk
+      - name: Test
         run: cd packages/node && npm test
 
-      - name: Build @fayda/react
+      - name: Build
         run: cd packages/react && npm run build
 
-      - name: Test @fayda/react
+      - name: Test
         run: cd packages/react && npm test
 
   publish:
